@@ -1,7 +1,9 @@
 #!/bin/bash
 
-mkdir /root/DRJACK/
 export BASEDIR=/root/DRJACK/
+
+mkdir $BASEDIR
+
 
 #yum -y update
 
@@ -14,6 +16,7 @@ yum -y install netcdf-fortran libpng15 iproute-tc tcp_wrappers-libs sendmail pro
 ln -s libnetcdff.so.6 /lib64/libnetcdff.so.5 
 ln -s libnetcdf.so.11 /lib64/libnetcdf.so.7
 
+#  Download program
 
 cd /root/
 
@@ -24,25 +27,32 @@ curl -SL http://www.drjack.info/RASP/DOWNLOAD/wrf_execs.tar.gz | tar xCz $BASEDI
 curl -SL http://www.drjack.info/RASP/DOWNLOAD/wrfsi_misc.tar.gz | tar xCz $BASEDIR
 curl -SL http://www.drjack.info/RASP/DOWNLOAD/wrfsi_gui.tar.gz | tar xCz $BASEDIR
 curl -SL http://www.drjack.info/RASP/DOWNLOAD/rasp_region.panoche.tar.gz | tar xCz $BASEDIR  
+curl -SL  http://www.drjack.info/RASP/DOWNLOAD/rasp_region.sw_southafrica.tar.gz | tar xCz $BASEDIR  
 
+
+#  Download GEOG
 
 cd $BASEDIR/WRF/wrfsi/extdata/GEOG
-
 
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/albedo_ncep.tar.tgz | tar xz 
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/greenfrac.tar.tgz | tar xz 
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/islope.tar.tgz | tar xz 
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/maxsnowalb.tar.tgz | tar xz 
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltemp_1deg.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/landuse_30s/landuse_30s.NW.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_bot_30s/soiltype_bot_30s.NW.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_top_30s/soiltype_top_30s.NW.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/topo_30s/topo_30s.NW.tar.tgz | tar xz
 
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/landuse_30s/landuse_30s.NW.tar.tgz | tar xz
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/landuse_30s/landuse_30s.NE.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_bot_30s/soiltype_bot_30s.NE.tar.tgz | tar xz 
-curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_top_30s/soiltype_top_30s.NE.tar.tgz | tar xz 
+
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/topo_30s/topo_30s.NW.tar.tgz | tar xz
 curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/topo_30s/topo_30s.NE.tar.tgz | tar xz
+
+
+ 
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_bot_30s/soiltype_bot_30s.NW.tar.tgz | tar xz 
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_bot_30s/soiltype_bot_30s.NE.tar.tgz | tar xz 
+
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_top_30s/soiltype_top_30s.NW.tar.tgz | tar xz 
+curl -SL ftp://aftp.fsl.noaa.gov/divisions/frd-laps/WRFSI/Geog_Data/soiltype_top_30s/soiltype_top_30s.NE.tar.tgz | tar xz 
 
 
 
